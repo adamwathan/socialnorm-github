@@ -66,7 +66,7 @@ class GitHubProvider extends OAuth2Provider
     public function getJson($url, $headers)
     {
         $response = $this->httpClient->get($url, ['headers' => $headers]);
-        return $response->json();
+        return json_decode($response->getBody(), true);
     }
 
     protected function getPrimaryEmail($emails)
